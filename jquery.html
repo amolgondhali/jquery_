@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <style>
+      #panel,
+      #flip {
+        padding: 5px;
+        font-size: 18px;
+        text-align: center;
+        background-color: #555;
+        color: white;
+        border: solid 1px #666;
+        border-radius: 3px;
+      }
+
+      #panel {
+        padding: 50px;
+        display: none;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <input type="text" name="name" id="name" value="GeekyShows" data-sid="3" />
+    <p>Hello</p>
+    <div id="div-id">This </div>
+    <br />
+    <img src="image/pic.jpg" alt="" width="300px" id="image-id" /> <br />
+    <img src="image/zom.png" alt="" height="200px" id="zom-id" /> <br />
+
+    <button id="btn-hide">Hide Image</button>
+    <button id="btn-show">Show Image</button>
+    <button id="btn-toggle">Toggle Hide/Show Image</button>
+
+    <button id="btn-fadeout">Fade Out</button>
+    <button id="btn-fadein">Fade In</button>
+    <button id="btn-fadetoggle">Fade Toggle</button>
+    <button id="btn-fadeto">Fade To</button>
+
+    <button id="btn-slideup">Slide Up</button>
+    <button id="btn-slidedown">Slide Down</button>
+    <button id="btn-slidetoggle">Slide Toggel</button>
+
+    <button id="btn-animate">Animate</button>
+
+    <button id="btn-setText">Set Text</button>
+    <button id="btn-setHTML">Set HTML</button>
+    <button id="btn-setValue">Set Value</button>
+    <button id="btn-setAttrValue">Set Attr Value</button>
+    <button id="btn-setImageAttrValue">Set Image Attr Value</button>
+    <button id="btn-addClass">Add Class</button>
+    <button id="btn-removeClass">Remove Class</button>
+    <button id="btn-toggleClass">Toggle Class</button>
+
+    <button id="btn-setCSS">Set CSS</button>
+    <button id="btn-setMultiCSS">Set Multiple CSS</button>
+
+    <!-- Download Offline Jquery -->
+
+    <button id="stop">Stop sliding</button>
+
+    <div id="flip">Click to slide down panel</div>
+    <div id="panel">Hello world!</div>
+
+    <br /><br />
+    <button>Hide</button>
+
+    <p>This is a paragraph with little content.</p>
+
+    <button>Start Animation</button>
+
+    <div
+      style="
+        background: #98bf21;
+        height: 100px;
+        width: 100px;
+        position: absolute;
+      "
+    ></div>
+
+    <script src="jquery.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#flip").click(function () {
+          $("#panel").slideDown(5000);
+        });
+        $("#stop").click(function () {
+          $("#panel").stop();
+        });
+      });
+      
+
+  $("#btn-hide").click(function () {
+    $("#image-id").hide(5000, function () {
+      console.log("Image Hide Ho Chuka Hai");
+    });
+  
+
+  // Show
+  $("#btn-show").click(function () {
+    $("#image-id").show(5000, function () {
+      console.log("Image Show Ho Chuka Hai");
+    });
+  });
+
+  // Hide and Show - Toggle
+  $("#btn-toggle").click(function () {
+    $("#image-id").toggle(1000, function () {
+      console.log("Image Hide/Show Ho Chuka Hai");
+    });
+  });
+
+  // Fade Out
+  $("#btn-fadeout").click(function () {
+    $("#image-id").fadeOut(1000, function () {
+      console.log("Image Fade Out Ho Chuka Hai");
+    });
+  });
+  
+  // Fade In
+  $("#btn-fadein").click(function () {
+    $("#image-id").fadeIn(1000, function () {
+      console.log("Image Fade In Ho Chuka Hai");
+    });
+  });
+
+  // Fade Toggle
+  $("#btn-fadetoggle").click(function () {
+    $("#image-id").fadeToggle(1000, function () {
+      console.log("Image Fade Toggle Ho Chuka Hai");
+    });
+  });
+  // Fade To
+  $("#btn-fadeto").click(function () {
+    $("#image-id").fadeTo(1000, 0.5, function () {
+      console.log("Image Fade To Ho Chuka Hai");
+    });
+  });
+
+  // Slide Up
+  $("#btn-slideup").click(function () {
+    $("#image-id").slideUp(1000, function () {
+      console.log("Image Slide Up Ho Chuka Hai");
+    });
+  });
+  // Slide Down
+  $("#btn-slidedown").click(function () {
+    $("#image-id").slideDown(1000, function () {
+      console.log("Image Slide Down Ho Chuka Hai");
+    });
+  });
+  // Slide Toggle
+  $("#btn-slidetoggle").click(function () {
+    $("#image-id").slideToggle(1000, function () {
+      console.log("Image Slide Toggle Ho Chuka Hai");
+    });
+  });
+
+  // Animate - Perform a custom animation of a set of CSS Properties
+  $("#btn-animate").click(function () {
+    $("#zom-id").animate({ left: "+=80" }, 1000, function () {
+      console.log("Image Animate Ho Chuka Hai");
+    });
+  });
+
+  // Get Text
+  let textdata = $("p").text();
+  console.log(textdata);
+  // Set Text
+  $("#btn-setText").click(function () {
+    let newtextdata = "This is New Text";
+    $("p").text(newtextdata);
+  });
+
+  // Get HTML
+  let htmldata = $("p").html();
+  console.log(htmldata);
+  // Set HTML
+  $("#btn-setHTML").click(function () {
+    let newhtmldata = "<b>This is New Text</b>";
+    $("p").html(newhtmldata);
+  });
+
+  // Get Value
+  let inputValue = $("#name").val();
+  console.log(inputValue);
+  // Set value
+  $("#btn-setValue").click(function () {
+    let newInputValue = "Sonam";
+    $("#name").val(newInputValue);
+  });
+
+  // Get Attribute
+  let attrValue1 = $("link").attr("href");
+  console.log(attrValue1);
+
+  let attrValue2 = $("#name").attr("data-sid");
+  console.log(attrValue2);
+
+  // Set Attribute
+  $("#btn-setAttrValue").click(function () {
+    // Get Old Data
+    console.log("Old Data:", $("#name").attr("data-sid"));
+
+    // Set New Data
+    $("#name").attr("data-sid", "20");
+    console.log("New Data Set");
+
+    // Get New Data
+    console.log("New Data:", $("#name").attr("data-sid"));
+  });
+
+  // Set Image src Attribute
+  $("#btn-setImageAttrValue").click(function () {
+    $("#image-id").attr("src", "image/photo.jpg");
+  });
+
+  // Add CSS Class
+  $("#btn-addClass").click(function () {
+    $("p").addClass("myclass");
+  });
+
+  // Remove CSS Class
+  $("#btn-removeClass").click(function () {
+    $("p").removeClass("myclass");
+  });
+
+  // Toggle CSS Class
+  $("#btn-toggleClass").click(function () {
+    $("p").toggleClass("myclass");
+  });
+
+  // Get CSS Property Value
+  let divColor = $("#div-id").css("color");
+  console.log(divColor);
+
+  // Set CSS Property
+  $("#btn-setCSS").click(function () {
+    $("#div-id").css("font-size", 70);
+  });
+
+  // Set Multiple CSS Property
+  $("#btn-setMultiCSS").click(function () {
+    $("#div-id").css({ "font-size": 70, "background-color": "yellow" });
+  });
+});
+ 
+
+
+    </script>
+  </body>
+</html>
